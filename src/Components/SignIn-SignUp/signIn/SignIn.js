@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { signInWithGoogle } from "../../../Firebase/Firebase";
 import CustomButton from "../../custom-button/CustomButton";
 import FormInput from "../form-input/FormInput";
 import "./signIn.scss";
@@ -38,6 +39,10 @@ const SignIn = () => {
           onChange={(event) => setPass(event.target.value)}
         />
         <CustomButton type="submit">SignIn</CustomButton>
+        <CustomButton onClick={signInWithGoogle}>
+          {" "}
+          SignIn with Google{" "}
+        </CustomButton>
       </form>
     </div>
   );

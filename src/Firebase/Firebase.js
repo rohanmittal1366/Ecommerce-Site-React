@@ -1,8 +1,8 @@
-import firebase from "../Firebase/app";
+import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
 
-const Config = {
+const config = {
   apiKey: "AIzaSyDvvM7W2CLfBEvCWEQjq5nPd04J5hEg9Ag",
   authDomain: "e-commerce-site-5f2ca.firebaseapp.com",
   projectId: "e-commerce-site-5f2ca",
@@ -12,4 +12,13 @@ const Config = {
   measurementId: "G-P4G11SZKFY",
 };
 
-firebase.intializeApp(config);
+firebase.initializeApp(config);
+
+export const auth = firebase.auth();
+export const firestore = firebase.firestore();
+
+const provider = new firebase.auth.GoogleAuthProvider();
+provider.setCustomParameters({ prompt: "select_account" });
+export const signInWithGoogle = () => auth.signInWithPopup(provider);
+
+export default firebase;

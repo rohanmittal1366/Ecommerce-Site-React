@@ -38,11 +38,13 @@ const SignIn = () => {
           required
           onChange={(event) => setPass(event.target.value)}
         />
-        <CustomButton type="submit">SignIn</CustomButton>
-        <CustomButton onClick={signInWithGoogle}>
-          {" "}
-          SignIn with Google{" "}
-        </CustomButton>
+        <div className="buttons">
+          <CustomButton type="submit">SignIn</CustomButton>
+          <CustomButton onClick={signInWithGoogle} isGoogleSignIn>
+            {" "}
+            SignIn with Google{" "}
+          </CustomButton>
+        </div>
       </form>
     </div>
   );

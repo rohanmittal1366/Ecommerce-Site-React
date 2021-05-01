@@ -6,7 +6,7 @@ import ShopPage from "./Components/shoppage/ShopPage";
 import signinsignup from "./Components/SignIn-SignUp/signin-signup";
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { auth } from "./Firebase/Firebase";
+import { auth, createUserProfileDocument } from "./Firebase/Firebase";
 import { login, logout, selectUser } from "./features/userSlice";
 
 function App() {
@@ -15,9 +15,11 @@ function App() {
 
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
-      console.log("auth user is", authUser);
+      //console.log("auth user is", authUser);
       // debugger
       if (authUser) {
+        const userRef = createUserProfileDocument(authUser);
+
         dispatch(
           login({
             uid: authUser.uid,

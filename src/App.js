@@ -14,20 +14,21 @@ function App() {
   const user = useSelector(selectUser);
 
   useEffect(() => {
-    auth.onAuthStateChanged((authUser) => {
+    auth.onAuthStateChanged(async (authUser) => {
       //console.log("auth user is", authUser);
       // debugger
       if (authUser) {
-        const userRef = createUserProfileDocument(authUser);
+        const userRef = await createUserProfileDocument(authUser);
 
-        dispatch(
-          login({
-            uid: authUser.uid,
-            // photo: authUser.photoURL,
-            // email: authUser.email,
-            // displayName: authUser.displayName,
-          })
-        );
+        userRef.onSnapshot((snapShot) => {
+          //console.log(snapShot.data());
+          dispatch(
+            login({
+              uid: snapShot.id,
+              ...snapShot.data(),
+            })
+          );
+        });
       } else {
         dispatch(logout());
       }

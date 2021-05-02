@@ -10,11 +10,11 @@ const SignIn = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(value, pass);
-    const state = {
-      email: value,
-      password: pass,
-    };
+    //console.log(value, pass);
+    // const state = {
+    //   email: value,
+    //   password: pass,
+    // };
   };
   return (
     <div className="signIn">

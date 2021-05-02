@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { signInWithGoogle } from "../../../Firebase/Firebase";
+import { auth, signInWithGoogle } from "../../../Firebase/Firebase";
 import CustomButton from "../../custom-button/CustomButton";
 import FormInput from "../form-input/FormInput";
 import "./signIn.scss";
@@ -8,14 +8,22 @@ const SignIn = () => {
   const [value, setValue] = useState("");
   const [pass, setPass] = useState("");
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     //console.log(value, pass);
     // const state = {
     //   email: value,
     //   password: pass,
     // };
+    try {
+      await auth.signInWithEmailAndPassword(value, pass);
+      setValue("");
+      setPass("");
+    } catch (error) {
+      console.error(error);
+    }
   };
+
   return (
     <div className="signIn">
       <h2>I already have an account</h2>

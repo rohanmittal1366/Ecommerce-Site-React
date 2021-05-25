@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
 import { auth } from "../../Firebase/Firebase";
 import { connect } from "react-redux";
+import CartIcon from "../card-icon/CartIcon";
 
 const Header = ({ currentUser }) => {
   return (
@@ -27,6 +28,7 @@ const Header = ({ currentUser }) => {
             SIGN IN
           </Link>
         )}
+        <CartIcon />
       </div>
     </div>
   );

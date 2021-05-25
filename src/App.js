@@ -37,7 +37,7 @@ function App() {
 
   return (
     <div>
-      <Header currentUser={user} />
+      <Header />
       <Switch>
         <Route exact path="/" component={Homepage} />
         <Route path="/shop" component={ShopPage} />

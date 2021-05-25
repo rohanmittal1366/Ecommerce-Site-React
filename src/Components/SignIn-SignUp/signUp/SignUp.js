@@ -42,7 +42,7 @@ function SignUp() {
 
   return (
     <div className="sign-up">
-      <div className="title">I do not have a account</div>
+      <h2 className="title">I do not have a account</h2>
       <span>Sign up with your email and passsword</span>
       <form className="sign-up-form" onSubmit={handleSubmit}>
         <FormInput

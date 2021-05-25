@@ -23,6 +23,8 @@ function SignUp() {
     if (Password !== ConfirmPassword) {
       alert("Password don't match");
     }
+    if (Password.length < 6)
+      alert("Password length should be minimum of length 6 ");
 
     try {
       const { user } = await auth.createUserWithEmailAndPassword(

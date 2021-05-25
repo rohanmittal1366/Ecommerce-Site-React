@@ -5,13 +5,12 @@ import Homepage from "./Components/Homepage/Homepage";
 import ShopPage from "./Components/shoppage/ShopPage";
 import signinsignup from "./Components/SignIn-SignUp/signin-signup";
 import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { connect } from "react-redux";
 import { auth, createUserProfileDocument } from "./Firebase/Firebase";
-import { login, logout, selectUser } from "./features/userSlice";
+import { setCurrentUser } from "./Redux/user/user.action";
 
-function App() {
-  const dispatch = useDispatch();
-  const user = useSelector(selectUser);
+function App(props) {
+  const { setCurrentUser } = props;
 
   useEffect(() => {
     auth.onAuthStateChanged(async (authUser) => {
@@ -21,19 +20,17 @@ function App() {
         const userRef = await createUserProfileDocument(authUser);
 
         userRef.onSnapshot((snapShot) => {
-          //console.log(snapShot.data());
-          dispatch(
-            login({
-              uid: snapShot.id,
-              ...snapShot.data(),
-            })
-          );
+          console.log(snapShot.data());
+
+          setCurrentUser({
+            uid: snapShot.id,
+            ...snapShot.data(),
+          });
         });
-      } else {
-        dispatch(logout());
       }
+      setCurrentUser(authUser);
     });
-  }, [dispatch]);
+  });
 
   return (
     <div>
@@ -47,4 +44,8 @@ function App() {
   );
 }
 
-export default App;
+const mapDispatchToPops = (dispatch) => ({
+  setCurrentUser: (user) => dispatch(setCurrentUser(user)),
+});
+
+export default connect(null, mapDispatchToPops)(App);

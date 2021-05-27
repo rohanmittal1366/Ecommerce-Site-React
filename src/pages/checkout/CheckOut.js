@@ -7,7 +7,6 @@ import {
 import "./checkout.scss";
 import { createStructuredSelector } from "reselect";
 import CheckoutItem from "../../Components/Checkout-item/CheckOutItem";
-import CartItem from "../../Components/cart-item/CartItem";
 
 const CheckOut = ({ cartItems, total }) => {
   return (

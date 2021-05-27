@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import MenuItem from "../menu-item/MenuItem";
 import "./directory.scss";
 import { createStructuredSelector } from "reselect";

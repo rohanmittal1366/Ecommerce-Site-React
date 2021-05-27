@@ -37,7 +37,6 @@ function App(props) {
   return (
     <div>
       <Header />
-
       <Switch>
         <Route exact path="/" component={Homepage} />
         <Route path="/shop" component={ShopPage} />

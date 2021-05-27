@@ -8,6 +8,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { auth, createUserProfileDocument } from "./Firebase/Firebase";
 import { setCurrentUser } from "./Redux/user/user.action";
+import CheckOut from "./pages/checkout/CheckOut";
 
 function App(props) {
   const { setCurrentUser } = props;
@@ -40,6 +41,8 @@ function App(props) {
       <Switch>
         <Route exact path="/" component={Homepage} />
         <Route path="/shop" component={ShopPage} />
+        <Route exact path="/checkout" component={CheckOut} />
+
         <Route
           exact
           path="/signin"
